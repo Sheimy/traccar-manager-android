@@ -28,6 +28,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.Message
+import android.util.Log
 import android.view.View
 import android.webkit.*
 import androidx.appcompat.app.AlertDialog
@@ -100,6 +101,7 @@ class MainFragment : WebViewFragment() {
             mainActivity?.pendingEventId = null
             if (eventId != null) {
                 webView.loadUrl("$url?eventId=$eventId")
+               // Log.d("fffff","$url?eventId=$eventId")
             } else {
                 webView.loadUrl(url)
             }
