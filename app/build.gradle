@@ -35,7 +35,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.21"
     implementation 'com.google.firebase:firebase-messaging-ktx:23.1.2'
     googleImplementation platform('com.google.firebase:firebase-bom:32.0.0')
-    googleImplementation 'com.google.firebase:firebase-core'
+    googleImplementation 'com.google.firebase:firebase-core:21.1.1'
     googleImplementation 'com.google.firebase:firebase-analytics'
     googleImplementation 'com.google.firebase:firebase-crashlytics'
     googleImplementation 'com.google.firebase:firebase-messaging'
