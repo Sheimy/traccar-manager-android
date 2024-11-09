@@ -16,9 +16,15 @@
 package org.traccar.manager
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.app.AlertDialog
+import android.app.Application
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -29,7 +35,7 @@ class ManagerMessagingService : FirebaseMessagingService() {
     @SuppressLint("UnspecifiedImmutableFlag")
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+       /* val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
         } else {
             PendingIntent.FLAG_ONE_SHOT
@@ -43,7 +49,14 @@ class ManagerMessagingService : FirebaseMessagingService() {
             .setContentText(remoteMessage.notification?.body)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
-        (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).notify(remoteMessage.hashCode(), builder.build())
+        (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).notify(remoteMessage.hashCode(), builder.build())*/
+        val message = remoteMessage.notification?.body
+
+        // Send a broadcast to show the dialog
+        val intent = Intent(this, DialogActivity::class.java)
+        intent.putExtra("message", message)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        sendBroadcast(intent)
     }
 
     override fun onNewToken(token: String) {

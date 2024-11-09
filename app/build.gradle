@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 33
+    compileSdk 35
 
     defaultConfig {
         applicationId 'org.traccar.manager'
-        minSdkVersion 19
-        targetSdkVersion 33
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 36
         versionName '4.0'
         multiDexEnabled true
@@ -22,19 +22,29 @@ android {
         }
         google
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
-    implementation 'androidx.preference:preference-ktx:1.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
+    implementation 'androidx.core:core-ktx:1.15.0'
     implementation 'androidx.biometric:biometric-ktx:1.2.0-alpha05'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.21"
-    implementation 'com.google.firebase:firebase-messaging-ktx:23.1.2'
-    googleImplementation platform('com.google.firebase:firebase-bom:32.0.0')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.20"
+    implementation 'com.google.firebase:firebase-messaging-ktx:24.0.3'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    googleImplementation platform('com.google.firebase:firebase-bom:33.5.1')
     googleImplementation 'com.google.firebase:firebase-core:21.1.1'
     googleImplementation 'com.google.firebase:firebase-analytics'
     googleImplementation 'com.google.firebase:firebase-crashlytics'
